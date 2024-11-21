@@ -1,0 +1,48 @@
+name: Compile
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
+          fetch-depth: 1
+          lfs: true
+
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Setup TexLive
+        uses: teatimeguest/setup-texlive-action@v3
+        with:
+          version: 2024
+          package-file: requirements.txt
+          tlcontrib: true
+          update-all-packages: true
+
+      - name: Install Fonts
+        run: |
+          make install-font-linux
+
+      - name: Compile
+        run: |
+          make compile-all
+
+      - name: Publish
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out  # default: public
+          publish_branch: pdf  # default: gh-pages

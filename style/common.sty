@@ -1,0 +1,124 @@
+% Disable warnings
+\RequirePackage{silence}
+\WarningsOff[longtable]
+\WarningsOff[array]
+
+% Font Settings
+\RequirePackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\setmainfont{Times Newer Roman}[Scale=1.1]
+\setsansfont[Weight = 300, LetterSpace = 3, Scale = 0.9]{Arial}
+\setmonofont{Inconsolata}[Scale=1.1]
+
+\RequirePackage[a4paper,nohead,nofoot,hmargin=2cm,vmargin=2.5cm]{geometry}
+
+% For colors
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+\definecolor{linecolor}{HTML}{fab57a}
+\definecolor{markercolor}{HTML}{f06868}
+
+% For icons
+\RequirePackage{relsize}
+\RequirePackage{fontawesome5}
+\RequirePackage{simpleicons}
+
+% For profile
+\newcommand{\profilefield}[2]{\makebox[1em]{\color{markercolor}#1}
+  #2\hspace{1.2em}}
+
+% For Linker
+\RequirePackage{hyperref}
+\hypersetup{%
+  colorlinks=true,
+  allcolors=black,
+  breaklinks=true,
+}
+
+% For phonetic symbol
+\RequirePackage{lmodern}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{tipa}
+
+% For List
+\RequirePackage{pifont}
+\newcommand{\listitem}{\hangindent=1em \textbf{\textendash{}}}
+
+% CV style
+\rubricfont{\Large\bfseries\sffamily}
+\setlength{\rubricspace}{2pt}
+\setlength{\rubricafterspace}{-3pt}
+\rubricalignment{l}
+\keyalignment{r}
+\newcommand{\makerubrichead}[1]{\vskip\baselineskip\@@rubrichead{#1}}
+
+\def\@@rubrichead#1{%
+  \begin{tikzpicture}[baseline]%\
+    \shade[left color=linecolor, right color=linecolor] rectangle
+    (\@almosttextwidth,2.5pt);
+    \node[font={\@rubricfont},inner sep=0pt,text ragged,anchor=south
+      west,text depth=.5ex,text height=1.5ex] at (1pt,2pt) {#1};
+  \end{tikzpicture}%
+  \vspace\rubricspace%
+}
+
+\newcommand{\prefixmarker}[1]{\def\@prefixmarker{#1}}
+\def\@prefixmarker{\relscale{.9}\faBookmark}
+\prefix{%
+  \hspace*{-1ex}
+  \color{markercolor}\@prefixmarker%
+  \hspace*{1ex}%
+}
+
+% Bibliography
+\RequirePackage[style=ieee,sorting=none,maxnames=99,giveninits=false]{biblatex}
+
+\setlength{\bibitemsep}{1ex}
+\setlength{\bibhang}{2.5em}
+\DeclareFieldFormat[article]{title}{\textbf{\mkbibemph{#1}}}
+\DeclareFieldFormat[inproceedings]{title}{\textbf{\mkbibemph{#1}}}
+
+\newcommand*\circled[1]{\tikz[baseline= (char.base)]{
+    \node[shape=circle,text=white,fill=markercolor,font=\sffamily\scriptsize\bfseries,inner
+      sep=1pt,text height=1.35ex,minimum width=1.5em,text centered] (char) {#1};}}
+\newcounter{bibitem}
+\AtBeginBibliography{\setcounter{bibitem}{1}}
+\DeclareFieldFormat{labelnumberwidth}{\makebox[2.5em][l]{\circled{\thebibitem}}}%
+\setlength{\biblabelsep}{0pt}%
+\AtEveryBibitem{\stepcounter{bibitem}}%
+
+\newcommand{\mynames}[1]{\def\my@namelist{#1}}
+\mynames{Sun*/Ruiyang,Sun/Ruiyang}
+\newtoggle{boldname}
+\renewcommand*{\mkbibnamefamily}[1]{%
+  \global\togglefalse{boldname}%
+  \foreach\my@fname / \my@gname in \my@namelist {%
+    \ifboolexpr{ test {\ifdefstrequal{\namepartfamily}{\my@fname}}
+      and
+      test {\ifdefstrequal{\namepartgiven}{\my@gname}}}
+    {\global\toggletrue{boldname}}{}%
+  }%
+  \iftoggle{boldname}{\textbf{#1}}{#1}%
+}
+\renewcommand*{\mkbibnamegiven}[1]{%
+  \global\togglefalse{boldname}%
+  \foreach\my@fname / \my@gname in \my@namelist{%
+    \ifboolexpr{ test {\ifdefstrequal{\namepartfamily}{\my@fname}}
+      and test {\ifdefstrequal{\namepartgiven}{\my@gname}}}
+    {\global\toggletrue{boldname}\breakforeach}{}%
+  }%
+  \iftoggle{boldname}{\textbf{#1}}{#1}%
+}
+
+\RequirePackage{xpatch}
+\xpretofieldformat{doi}
+{\textcolor{markercolor}{\scriptsize\faLink}}
+{}{}
+\AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{url}}}
+\xpretofieldformat{url}
+{\textcolor{markercolor}{\scriptsize\faLink}}
+{}{}
+
+% For text
+\newcommand{\highlight}[1]{\textsf{\textbf{#1}}}
+\newcommand{\italic}[1]{\textsf{\textit{#1}}}

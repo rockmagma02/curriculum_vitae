@@ -1,0 +1,42 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+default_stages: [pre-commit, pre-push, manual]
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-xml
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/streetsidesoftware/cspell-cli
+    rev: v8.16.0
+    hooks:
+      - id: cspell
+  - repo: https://github.com/cmhughes/latexindent.pl.git
+    rev: V3.24.4
+    hooks:
+      - id: latexindent
+        args:
+          - -m
+          - -l
+          - "./latexindent.yaml"
+          - -wd
+  - repo: local
+    hooks:
+      - id: lint
+        name: format and lint
+        entry: make format-and-lint
+        language: system
+        pass_filenames: false
+        always_run: true

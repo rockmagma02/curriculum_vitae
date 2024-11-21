@@ -1,0 +1,51 @@
+@inproceedings{Dai.2023,
+  abstract  = {{With the development of large language models (LLMs), striking a balance between the performance and safety of AI systems has never been more critical. However, the inherent tension between the objectives of helpfulness and harmlessness presents a significant challenge during LLM training. To address this issue, we propose Safe Reinforcement Learning from Human Feedback (Safe RLHF), a novel algorithm for human value alignment. Safe RLHF explicitly decouples human preferences regarding helpfulness and harmlessness, effectively avoiding the crowdworkers' confusion about the tension and allowing us to train separate reward and cost models. We formalize the safety concern of LLMs as an optimization task of maximizing the reward function while satisfying specified cost constraints. Leveraging the Lagrangian method to solve this constrained problem, Safe RLHF dynamically adjusts the balance between the two objectives during fine-tuning. Through a three-round fine-tuning using Safe RLHF, we demonstrate a superior ability to mitigate harmful responses while enhancing model performance compared to existing value-aligned algorithms. Experimentally, we fine-tuned the Alpaca-7B using Safe RLHF and aligned it with collected human preferences, significantly improving its helpfulness and harmlessness according to human evaluations.}},
+  author    = {Dai*, Josef and Pan*, Xuehai and Sun*, Ruiyang and Ji*, Jiaming and Xu, Xinbo and Liu, Mickel and Wang, Yizhou and Yang\textsuperscript{\textdagger}, Yaodong},
+  booktitle = {The Twelfth International Conference on Learning Representations},
+  doi       = {10.48550/arxiv.2310.12773},
+  series    = {ICLR 2024 Spotlight},
+  title     = {{Safe RLHF: Safe Reinforcement Learning from Human Feedback}},
+  url       = {https://arxiv.org/abs/2310.12773},
+  year      = {2023}
+}
+@inproceedings{Liu.2023,
+  abstract  = {{In this paper, we introduce the BEAVERTAILS dataset, aimed at fostering research on safety alignment in large language models (LLMs). This dataset uniquely separates annotations of helpfulness and harmlessness for question-answering pairs, thus offering distinct perspectives on these crucial attributes. In total, we have gathered safety meta-labels for 333,963 question-answer (QA) pairs and 361,903 pairs of expert comparison data for both the helpfulness and harmlessness metrics. We further showcase applications of BeaverTails in content moderation and reinforcement learning with human feedback (RLHF), emphasizing its potential for practical safety measures in LLMs. We believe this dataset provides vital resources for the community, contributing towards the safe development and deployment of LLMs. Our project page is available at the following URL: https://sites.google.com/view/pku-beavertails.}},
+  address   = {Red Hook, NY, USA},
+  author    = {Ji, Jiaming and Liu, Mickel and Dai, Juntao and Pan, Xuehai and Zhang, Chi and Bian, Ce and Chen, Boyuan and Sun, Ruiyang and Wang, Yizhou and Yang, Yaodong},
+  booktitle = {Proceedings of the 37th International Conference on Neural Information Processing Systems},
+doi       = {10.48550/arxiv.2307.04657},
+  publisher = {Curran Associates Inc.},
+  series    = {NIPS 2023},
+  title     = {{BEAVERTAILS: towards improved safety alignment of llm via a human-preference dataset}},
+  year      = {2023},
+}
+@article{Yang.2023,
+  abstract = {{Large language models (LLMs) have demonstrated remarkable performance on a variety of natural language tasks based on just a few examples of natural language instructions, reducing the need for extensive feature engineering. However, most powerful LLMs are closed-source or limited in their capability for languages other than English. In this technical report, we present Baichuan 2, a series of large-scale multilingual language models containing 7 billion and 13 billion parameters, trained from scratch, on 2.6 trillion tokens. Baichuan 2 matches or outperforms other open-source models of similar size on public benchmarks like MMLU, CMMLU, GSM8K, and HumanEval. Furthermore, Baichuan 2 excels in vertical domains such as medicine and law. We will release all pre-training model checkpoints to benefit the research community in better understanding the training dynamics of Baichuan 2.}},
+  author   = {Yang, Aiyuan and Xiao, Bin and Wang, Bingning and Zhang, Borong and Bian, Ce and Yin, Chao and Lv, Chenxu and Pan, Da and Wang, Dian and Yan, Dong and Yang, Fan and Deng, Fei and Wang, Feng and Liu, Feng and Ai, Guangwei and Dong, Guosheng and Zhao, Haizhou and Xu, Hang and Sun, Haoze and Zhang, Hongda and Liu, Hui and Ji, Jiaming and Xie, Jian and Dai, JunTao and Fang, Kun and Su, Lei and Song, Liang and Liu, Lifeng and Ru, Liyun and Ma, Luyao and Wang, Mang and Liu, Mickel and Lin, MingAn and Nie, Nuolan and Guo, Peidong and Sun, Ruiyang and Zhang, Tao and Li, Tianpeng and Li, Tianyu and Cheng, Wei and Chen, Weipeng and Zeng, Xiangrong and Wang, Xiaochuan and Chen, Xiaoxi and Men, Xin and Yu, Xin and Pan, Xuehai and Shen, Yanjun and Wang, Yiding and Li, Yiyu and Jiang, Youxin and Gao, Yuchen and Zhang, Yupeng and Zhou, Zenan and Wu, Zhiying},
+  doi      = {10.48550/arxiv.2309.10305},
+  eprint   = {2309.10305},
+  journal  = {arXiv},
+  title    = {{Baichuan 2: Open Large-scale Language Models}},
+  year     = {2023}
+}
+@inproceedings{Ji.2023.2,
+  author    = {Ji, Jiaming and Zhang, Borong and Zhou, Jiayi and Pan, Xuehai and Huang, Weidong and Sun, Ruiyang and Geng, Yiran and Zhong, Yifan and Dai, Josef and Yang, Yaodong},
+  booktitle = {Advances in Neural Information Processing Systems},
+  pages     = {18964--18993},
+  publisher = {Curran Associates, Inc.},
+  series    = {NIPS 2023},
+  title     = {{Safety Gymnasium: A Unified Safe Reinforcement Learning Benchmark}},
+  url       = {https://arxiv.org/abs/2310.12567},
+  volume    = {36},
+  year      = {2023}
+}
+@article{Ji.2024tsi,
+  author  = {Ji, Jiaming and Zhou, Jiayi and Zhang, Borong and Dai, Juntao and Pan, Xuehai and Sun, Ruiyang and Huang, Weidong and Geng, Yiran and Liu, Mickel and Yang, Yaodong},
+  journal = {Journal of Machine Learning Research},
+  number  = {285},
+  pages   = {1--6},
+  title   = {{OmniSafe: An Infrastructure for Accelerating Safe Reinforcement Learning Research}},
+  url     = {http://jmlr.org/papers/v25/23-0681.html},
+  volume  = {25},
+  year    = {2024}
+}

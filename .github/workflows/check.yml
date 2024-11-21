@@ -1,0 +1,50 @@
+name: Check Code Style
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
+          fetch-depth: 1
+
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Setup TexLive
+        uses: teatimeguest/setup-texlive-action@v3
+        with:
+          version: 2024
+          package-file: requirements.txt
+          tlcontrib: true
+          update-all-packages: true
+
+      - name: Install dependencies
+        run: |
+          make install-latexindent
+          make install-rust
+          make install-texfmt
+          brew install pre-commit
+
+      - name: Run pre-commit
+        run: |
+          pre-commit run --all-files
+
+      - name: Lint and format
+        run: |
+          make format-and-lint

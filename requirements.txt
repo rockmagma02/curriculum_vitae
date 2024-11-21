@@ -1,0 +1,17 @@
+chktex
+lacheck
+collection-basic
+collection-latex
+collection-latexrecommended
+collection-metapost
+biber
+biblatex
+biblatex-ieee
+curve
+silence
+relsize
+fontawesome5
+simpleicons
+tipa
+luatexbase
+ctablestack

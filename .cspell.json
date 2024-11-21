@@ -1,0 +1,42 @@
+{
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+    "caseSensitive": true,
+    "dictionaryDefinitions": [
+        {
+            "name": "custom-dictionary-workspace",
+            "addWords": true,
+            "path": ".cspell.ignore",
+            "scope": "workspace"
+        }
+    ],
+    "dictionaries": [
+        "custom-dictionary-workspace",
+        "en_US",
+        "!latex"
+    ],
+    "ignorePaths": [
+        ".git",
+        ".gitignore",
+        ".gitattributes",
+        ".vscode",
+        "*.bib",
+        ".chktexrc",
+        "latexindent.yaml"
+    ],
+    "overrides": [
+        {
+            "name": "latex",
+            "filename": "*.tex",
+            "dictionaries": [
+                "!!latex"
+            ]
+        },
+        {
+            "name": "latex_style",
+            "filename": "*.sty",
+            "dictionaries": [
+                "!!latex"
+            ]
+        }
+    ]
+}
